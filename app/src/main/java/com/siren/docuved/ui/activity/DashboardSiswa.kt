@@ -1,26 +1,30 @@
 package com.siren.docuved.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.siren.docuved.R
-import com.siren.docuved.base.BaseActivity
 
-class DashboardSiswa : BaseActivity(), View.OnClickListener {
-    var button: Button? = null
+class DashboardSiswa : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dashboard_siswa)
-        findViewById<View>(R.id.button1)
-        button!!.setOnClickListener(this)
-    }
+        setContentView(R.layout.activity_dashboard_siswa)
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-    override fun onClick(v: View) {
-        if (v.id == R.id.button1) {
-            val intent = Intent(this, DashboardSiswa::class.java)
-            startActivity(intent)
-        }
+        val navController = findNavController(R.id.nav_host_fragment)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_dashboard, R.id.navigation_history, R.id.navigation_profile
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 }

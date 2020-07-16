@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:id="@+id/dash"
+        android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_dashboard_white_24dp"
         android:title="Dashboard" />
     <item
-        android:id="@+id/explore"
+        android:id="@+id/navigation_history"
         android:icon="@drawable/ic_explore_white_24dp"
         android:title="Daftar Berkas" />
     <item
-        android:id="@+id/personadd"
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_person_add_white_24dp"
-        android:title="Profil" />
+        android:title="Profile" />
+
 </menu>
