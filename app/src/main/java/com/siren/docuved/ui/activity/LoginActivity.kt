@@ -9,8 +9,8 @@ import android.widget.EditText
 import android.widget.TextView
 import com.siren.docuved.R
 import com.siren.docuved.base.BaseActivity
-import java.math.BigInteger
 import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 @SuppressLint("Registered")
 class LoginActivity : BaseActivity() {
@@ -41,21 +41,44 @@ class LoginActivity : BaseActivity() {
 
     private fun processLogin(){
 
-        firebaseRef.collection("user")
-            .whereEqualTo("email", mEmail.text.toString())
-            .get()
-            .addOnSuccessListener { result ->
-                Log.d("result", result.toString())
-                for (document in result) {
-                    Log.d("test", "${document.id} => ${document.data}")
-                }
+        Intent(applicationContext, DashboardSiswa::class.java).run {
+            startActivity(this)
+            finish()
+        }
 
-                Intent(applicationContext, DashboardSiswa::class.java).run {
-                    startActivity(this)
-                }
-            }
-            .addOnFailureListener() { exception ->
-                Log.w("err", "error getting documents.", exception)
-            }
+//        firebaseRef.collection("user")
+//            .whereEqualTo("email", mEmail.text.toString())
+//            .get()
+//            .addOnSuccessListener { result ->
+//                Log.d("result", result.toString())
+//                for (document in result) {
+//                    Log.d("test", "${document.id} => ${document.data}")
+//                }
+//
+//            }
+//            .addOnFailureListener() { exception ->
+//                Log.w("err", "error getting documents.", exception)
+//            }
+    }
+
+    fun md5(s: String): String? {
+        try {
+            // Create MD5 Hash
+            val digest = MessageDigest.getInstance("MD5")
+            digest.update(s.toByteArray())
+            val messageDigest = digest.digest()
+
+            // Create Hex String
+            val hexString = StringBuffer()
+            for (i in messageDigest.indices) hexString.append(
+                Integer.toHexString(
+                    0xFF and messageDigest[i].toInt()
+                )
+            )
+            return hexString.toString()
+        } catch (e: NoSuchAlgorithmException) {
+            e.printStackTrace()
+        }
+        return ""
     }
 }

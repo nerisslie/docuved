@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
-
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@drawable/background1"
-        android:layout_below="@id/frame1"/>
+    tools:context=".ui.fragment.ProfileFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,13 +12,21 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/background1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <ImageView
+                android:id="@+id/image_back"
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="180dp"
+                android:layout_marginTop="150dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="10dp"
                 android:background="#322F2F"/>
 
             <ImageView
@@ -35,7 +36,7 @@
                 android:background="@color/ic_person_background"
                 android:foreground="@drawable/ic_person_foreground"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="135dp"/>
+                android:layout_marginTop="100dp"/>
 
             <Space
                 android:id="@+id/space4"
@@ -180,23 +181,20 @@
                 android:inputType="textPassword"
                 android:layout_centerHorizontal="true" />
 
-
             <Button
                 android:id="@+id/button1"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:layout_below="@id/password"
+                android:layout_below="@id/image_back"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/roundedbutton"
                 android:shadowRadius="0"
-                android:paddingLeft="60dp"
-                android:drawableLeft="@drawable/ic_save_black_24dp"
-                android:text="SIMPAN DATA"
-                android:gravity=""
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:layout_marginTop="75dp"/>
+                android:text="KELUAR"
+                android:gravity="center"
+                android:textColor="#B63532"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <Space
                 android:layout_below="@id/button1"
@@ -204,34 +202,5 @@
                 android:layout_height="100dp"/>
 
         </RelativeLayout>
-
-
-
     </ScrollView>
-
-    <FrameLayout
-        android:id="@+id/frame1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:background="#322F2F"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Data Tersimpan"
-            android:textSize="22sp"
-            android:textColor="#FFFFFF"/>
-    </FrameLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:background="#322F2F"
-        app:elevation="0dp"
-        app:menu="@menu/bottomnav" />
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
