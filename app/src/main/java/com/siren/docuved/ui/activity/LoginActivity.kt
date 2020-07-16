@@ -3,10 +3,12 @@ package com.siren.docuved.ui.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuthException
 import com.siren.docuved.R
 import com.siren.docuved.base.BaseActivity
 import java.security.MessageDigest
@@ -18,8 +20,6 @@ class LoginActivity : BaseActivity() {
     private lateinit var mEmail: EditText
     private lateinit var mPassword: EditText
 
-    private lateinit var txtForgotPassword: TextView
-
     private lateinit var btnLogin: Button
     private lateinit var btnHelp: Button
 
@@ -29,37 +29,61 @@ class LoginActivity : BaseActivity() {
 
         mEmail              = findViewById(R.id.email)
         mPassword           = findViewById(R.id.password)
-        txtForgotPassword   = findViewById(R.id.txt_forgot_password)
         btnLogin            = findViewById(R.id.btn_login)
         btnHelp             = findViewById(R.id. btn_help)
 
         btnLogin.setOnClickListener {
 
-            processLogin()
+            validateUser()
+        }
+    }
+
+    public override fun onStart() {
+        super.onStart()
+
+        if(user.getUserData() != null)
+            goToHome()
+    }
+
+    private fun validateUser(){
+
+        when{
+            isEmpty(mEmail)         ->  mEmail.error        = "Email is required"
+            isEmpty(mPassword)      ->  mPassword.error     = "Password is required"
+            client.isOnline()       ->  processLogin()
+            else                    ->  showMessage("Tidak ada koneksi internet")
         }
     }
 
     private fun processLogin(){
 
+        mProgressDialog.show()
+
+        user.auth.signInWithEmailAndPassword(mEmail.text.toString(), mPassword.text.toString())
+            .addOnSuccessListener {
+
+                goToHome()
+            }
+            .addOnFailureListener {
+                if(it is FirebaseAuthException)
+                    showMessage(it.message.toString())
+                else
+                    showMessage("Authentication Failed")
+                mProgressDialog.dismiss()
+            }
+    }
+
+    private fun goToHome(){
+
+        showMessage("Success Login")
+
         Intent(applicationContext, DashboardSiswa::class.java).run {
             startActivity(this)
             finish()
         }
-
-//        firebaseRef.collection("user")
-//            .whereEqualTo("email", mEmail.text.toString())
-//            .get()
-//            .addOnSuccessListener { result ->
-//                Log.d("result", result.toString())
-//                for (document in result) {
-//                    Log.d("test", "${document.id} => ${document.data}")
-//                }
-//
-//            }
-//            .addOnFailureListener() { exception ->
-//                Log.w("err", "error getting documents.", exception)
-//            }
     }
+
+    private fun isEmpty(inputText: EditText)    = TextUtils.isEmpty(inputText.text.toString())
 
     fun md5(s: String): String? {
         try {
