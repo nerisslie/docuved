@@ -72,7 +72,7 @@ class AddFragment : Fragment() {
 
         btnSave.setOnClickListener {
 
-
+            validateRegister()
         }
 
         return root
