@@ -7,7 +7,6 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuthException
 import com.siren.docuved.R
 import com.siren.docuved.base.BaseActivity
