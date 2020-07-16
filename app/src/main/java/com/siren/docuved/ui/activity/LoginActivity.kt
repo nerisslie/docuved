@@ -9,6 +9,8 @@ import android.widget.EditText
 import android.widget.TextView
 import com.siren.docuved.R
 import com.siren.docuved.base.BaseActivity
+import java.math.BigInteger
+import java.security.MessageDigest
 
 @SuppressLint("Registered")
 class LoginActivity : BaseActivity() {
