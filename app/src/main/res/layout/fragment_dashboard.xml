@@ -5,110 +5,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.DashboardFragment"
-    android:paddingTop="10dp">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:background="#322F2F"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"/>
-                <TextView
-                    android:id="@+id/data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Data Berkas"
-                    android:textColor="#FF9800"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="50dp"/>
-                <TextView
-                    android:id="@+id/nama"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nama"
-                    android:textColor="#FF9800"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_below="@id/data"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="80dp"/>
-                <TextView
-                    android:id="@+id/jurusan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jurusan"
-                    android:textColor="#FF9800"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_below="@id/nama"
-                    android:layout_marginStart="80dp"/>
-                <TextView
-                    android:id="@+id/tahun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tahun"
-                    android:textColor="#FF9800"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_below="@id/jurusan"
-                    android:layout_marginStart="80dp"/>
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="#565656"
-                    android:foreground="@drawable/ic_person_white_24dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="60dp"
-                    android:layout_marginTop="40dp"/>
-                <TextView
-                    android:id="@+id/totalberkas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4"
-                    android:textColor="#FF9800"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_below="@id/tahun"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginStart="100dp"/>
-                <TextView
-                    android:id="@+id/berkasrapor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Berkas Rapor"
-                    android:textColor="#FF9800"
-                    android:textSize="14sp"
-                    android:layout_below="@id/totalberkas"
-                    android:layout_marginStart="100dp"/>
+    android:layout_margin="20dp"
+    android:background="#322F2F"
+    tools:context=".ui.fragment.DashboardFragment">
 
-                <TextView
-                    android:id="@+id/total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:textColor="#FF9800"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_below="@id/berkasrapor"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginStart="100dp"/>
-                <TextView
-                    android:id="@+id/berkasijazah"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Berkas Ijazah"
-                    android:textColor="#FF9800"
-                    android:textSize="14sp"
-                    android:layout_below="@id/total"
-                    android:layout_marginStart="100dp"/>
-            </RelativeLayout>
-    </ScrollView>
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#FF9800"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Data Berkas"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_profile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:src="#565656"
+        android:foreground="@drawable/ic_person_white_24dp"
+        app:layout_constraintTop_toBottomOf="@id/data"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/profile_container"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/profile_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="@id/img_profile"
+        app:layout_constraintStart_toEndOf="@id/img_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/img_profile">
+
+        <TextView
+            android:id="@+id/txt_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF9800"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="nama"/>
+
+        <TextView
+            android:id="@+id/txt_jurusan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF9800"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="jurusan"/>
+
+        <TextView
+            android:id="@+id/txt_tahun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF9800"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="tahun"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/jumlah_berkas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:textColor="#FF9800"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Jumlah Berkas"
+        app:layout_constraintTop_toBottomOf="@id/img_profile"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/jumlah_berkas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/txt_total_raport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF9800"
+            android:textSize="14sp"
+            android:text="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF9800"
+            android:textSize="14sp"
+            android:text="Berkas Rapor"/>
+
+        <TextView
+            android:id="@+id/txt_total_ijazah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:textColor="#FF9800"
+            android:textSize="14sp"
+            android:text="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF9800"
+            android:textSize="14sp"
+            android:text="Berkas Ijazah"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

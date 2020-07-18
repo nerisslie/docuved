@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.siren.docuved" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,16 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+
         <activity
-            android:name=".ui.activity.DashboardAdmin"
-            android:label="@string/title_activity_dashboard_admin" >
-        </activity>
-        <activity
-            android:name=".ui.activity.DashboardSiswa"
-            android:label="@string/title_activity_dashboard_siswa"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".ui.activity.SplashScreen"
+            android:name=".ui.activity.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,12 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.DaftarSiswa" />
-        <activity android:name=".ui.activity.Dashboard" />
         <activity
             android:name=".ui.activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.activity.Profil" />
+        <activity
+            android:name=".ui.activity.DashboardActivity"
+            android:label="@string/title_activity_dashboard_siswa"
+            android:theme="@style/AppTheme" />
     </application>
-
 </manifest>

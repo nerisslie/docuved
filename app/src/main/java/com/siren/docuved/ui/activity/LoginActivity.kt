@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import com.google.firebase.auth.FirebaseAuthException
@@ -76,7 +75,7 @@ class LoginActivity : BaseActivity() {
 
         showMessage("Success Login")
 
-        Intent(applicationContext, DashboardSiswa::class.java).run {
+        Intent(applicationContext, DashboardActivity::class.java).run {
             startActivity(this)
             finish()
         }
