@@ -55,7 +55,7 @@ class HistoryFragment : BaseFragment() {
                 .whereEqualTo("user_id", user.auth.uid)
                 .get()
                 .addOnSuccessListener { documents ->
-                    Log.d("ben", documents.size().toString())
+
                     val archiveArrayList  = documents.toObjects(ArchiveResponse::class.java)
 
                     rv_history.apply {
@@ -76,40 +76,8 @@ class HistoryFragment : BaseFragment() {
             showMessage("No Internet Connection")
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        when (requestCode) {
-            1 -> {
-                if (grantResults.isNotEmpty() && grantResults[0] ==
-                    PackageManager.PERMISSION_GRANTED) {
-                    if ((ContextCompat.checkSelfPermission((activity as DashboardActivity).applicationContext,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                                PackageManager.PERMISSION_GRANTED)) {
-
-                        showMessage("Permission Granted")
-                    }else{
-
-                        showMessage("Permission Denied")
-                        activity?.finish()
-                    }
-                } else {
-
-                    showMessage("Permission Denied")
-                    activity?.finish()
-                }
-
-                return
-            }
-        }
-    }
-
     private fun checkPermission(){
-        Log.d("ben", "tets")
+
         if (ActivityCompat.checkSelfPermission(
                 (activity as DashboardActivity).applicationContext,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -126,7 +94,7 @@ class HistoryFragment : BaseFragment() {
 
     private fun processDownload(partItem: ArchiveResponse){
 
-        val localFile = File(Environment.getExternalStorageDirectory(), partItem.file.toString())
+        val localFile = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), partItem.file.toString())
 
         loadingDialog.show()
 

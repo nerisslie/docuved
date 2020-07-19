@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import com.google.firebase.auth.FirebaseAuthException
@@ -40,7 +41,7 @@ class LoginActivity : BaseActivity() {
         super.onStart()
 
         if(user.getUserData() != null)
-            goToHome()
+            goToDashboard()
     }
 
     private fun validateUser(){
@@ -60,7 +61,7 @@ class LoginActivity : BaseActivity() {
         user.auth.signInWithEmailAndPassword(mEmail.text.toString(), mPassword.text.toString())
             .addOnSuccessListener {
 
-                goToHome()
+                goToDashboard()
             }
             .addOnFailureListener {
                 if(it is FirebaseAuthException)
@@ -71,7 +72,7 @@ class LoginActivity : BaseActivity() {
             }
     }
 
-    private fun goToHome(){
+    private fun goToDashboard(){
 
         showMessage("Success Login")
 

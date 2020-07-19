@@ -1,8 +1,12 @@
 package com.siren.docuved.ui.activity
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -28,5 +32,40 @@ class DashboardActivity : BaseMainActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            1 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED) {
+                    if ((ContextCompat.checkSelfPermission(applicationContext,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                                PackageManager.PERMISSION_GRANTED)) {
+
+                        showMessage("Permission Granted")
+                    }else{
+
+                        showMessage("Permission Denied")
+                        finish()
+                    }
+                } else {
+
+                    showMessage("Permission Denied")
+                    finish()
+                }
+            }
+            else    -> {
+
+                showMessage("Permission Denied")
+                finish()
+            }
+        }
     }
 }

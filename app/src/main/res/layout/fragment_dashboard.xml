@@ -50,8 +50,7 @@
             android:layout_height="wrap_content"
             android:textColor="#FF9800"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="nama"/>
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/txt_jurusan"
@@ -59,8 +58,7 @@
             android:layout_height="wrap_content"
             android:textColor="#FF9800"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="jurusan"/>
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/txt_tahun"
@@ -68,8 +66,7 @@
             android:layout_height="wrap_content"
             android:textColor="#FF9800"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="tahun"/>
+            android:textStyle="bold"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
