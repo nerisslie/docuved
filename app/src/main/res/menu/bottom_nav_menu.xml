@@ -11,7 +11,7 @@
         android:title="Daftar Berkas" />
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_person_add_white_24dp"
+        android:icon="@drawable/ic_person_white_24dp"
         android:title="Profile" />
 
 </menu>
