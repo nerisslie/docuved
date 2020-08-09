@@ -4,8 +4,8 @@ import android.app.AlertDialog
 import android.content.Context
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.ita.e_laundry.custom.Client
-import com.ita.e_laundry.custom.User
+import com.siren.docuved.custom.Client
+import com.siren.docuved.custom.User
 import com.siren.docuved.ui.activity.DashboardActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

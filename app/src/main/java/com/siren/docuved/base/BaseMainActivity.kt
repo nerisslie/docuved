@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.ita.e_laundry.custom.Client
-import com.ita.e_laundry.custom.User
+import com.siren.docuved.custom.Client
+import com.siren.docuved.custom.User
 import com.siren.docuved.ui.activity.LoginActivity
 import dmax.dialog.SpotsDialog
 

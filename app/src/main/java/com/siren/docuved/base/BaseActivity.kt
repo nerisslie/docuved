@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
-import com.ita.e_laundry.custom.Client
-import com.ita.e_laundry.custom.User
+import com.siren.docuved.custom.Client
+import com.siren.docuved.custom.User
 import dmax.dialog.SpotsDialog
 
 abstract class BaseActivity: AppCompatActivity() {

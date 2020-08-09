@@ -1,4 +1,4 @@
-package com.ita.e_laundry.custom
+package com.siren.docuved.custom
 
 import android.content.Context
 import android.net.ConnectivityManager
