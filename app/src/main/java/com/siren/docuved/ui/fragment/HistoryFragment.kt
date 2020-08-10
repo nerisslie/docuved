@@ -98,7 +98,7 @@ class HistoryFragment : BaseFragment() {
 
         loadingDialog.show()
 
-        storageRef.child("pdf/${partItem.file}").getFile(localFile)
+        storageRef.child("images/${partItem.file}").getFile(localFile)
         .addOnSuccessListener {
 
             showMessage("Download Success")
